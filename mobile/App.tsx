@@ -12,8 +12,8 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 import type { WebViewNavigation } from 'react-native-webview';
 
-const HOME_URL = 'https://toyutoyu.com';
-const ALLOWED_HOSTS = new Set(['toyutoyu.com', 'www.toyutoyu.com']);
+const HOME_URL = 'https://totoyu-58355.bubbleapps.io/';
+const ALLOWED_HOSTS = new Set(['totoyu-58355.bubbleapps.io']);
 
 function isAllowedUrl(urlString: string): boolean {
   if (urlString === 'about:blank') return true;

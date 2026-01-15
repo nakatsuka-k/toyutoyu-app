@@ -1,6 +1,6 @@
 # toyutoyu-app
 
-React Native（iOS / Android）で `https://toyutoyu.com` をWebViewで固定表示するだけのアプリです。
+React Native（iOS / Android）で `https://totoyu-58355.bubbleapps.io/` をWebViewで固定表示するだけのアプリです。
 
 - 実体のプロジェクトは `mobile/` 配下にあります
 - iOSはiPhone/iPad（Universal）でビルドできる前提です
@@ -34,6 +34,8 @@ npm run android
 ```
 
 ## リリースビルド
+
+詳細手順: [mobile/docs/release.md](mobile/docs/release.md)
 
 ### iOS（ipa / iPad含む）
 

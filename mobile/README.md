@@ -1,4 +1,4 @@
-This is a [**React Native**](https://reactnative.dev) app that opens `https://toyutoyu.com` in a fixed WebView.
+This is a [**React Native**](https://reactnative.dev) app that opens `https://totoyu-58355.bubbleapps.io/` in a fixed WebView.
 
 # Getting Started
 
