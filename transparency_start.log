@@ -1,0 +1,131 @@
+{
+  "globalSetting" : {
+
+  },
+  "registration" : [
+
+  ],
+  "copy_status_version" : "1",
+  "stateMachine" : {
+    "idsKTDisable" : false,
+    "cloudRecords" : {
+      "optIn" : {
+
+      }
+    },
+    "pendingFlags" : {
+
+    },
+    "status" : {
+      "idsAccountStatus" : "IDSAccountStatusInvalid",
+      "serverOptedIn" : "Pending",
+      "systemStatus" : "Unavailable",
+      "accountStatus" : "NoAccount",
+      "copy_status_version" : "2",
+      "selfStatus" : "Unavailable",
+      "pendingChanges" : "YES",
+      "everOptIn" : false,
+      "optedIn" : "Pending"
+    },
+    "messages" : 0,
+    "trees" : {
+      "IDS" : {
+        "vrfKey" : "E4793524CDC10C7F5F160974B54F124FCDD85DE9FA78DA738C52791C0DDBCEBD",
+        "tltLogBeginMs" : 1698166491735,
+        "inResetWindow" : false,
+        "patLogBeginMs" : 1694720939630
+      },
+      "MP" : {
+        "vrfKey" : "64B4D8C3C1E6EED6F11CB8F6F465ED46DC392C9A3D64A8FADAEED5E38A94176E",
+        "tltLogBeginMs" : 1698166491735,
+        "inResetWindow" : false,
+        "patLogBeginMs" : 1691601092316
+      },
+      "FT" : {
+        "vrfKey" : "D241F3CC2129D7451B65CC888FA03DABD39B5B79A7BDDB442349388F1B78F9F7",
+        "tltLogBeginMs" : 1698166491735,
+        "inResetWindow" : false,
+        "patLogBeginMs" : 1691601121796
+      }
+    },
+    "lockstate" : "<KTLockStateTracker: unlocked last:now>",
+    "missingValidateSelfFallback" : {
+
+    },
+    "launch" : [
+      "2026-01-17T19:09:27.047+0900 - started:1",
+      "2026-01-17T19:09:27.050+0900 - Initializing:2",
+      "2026-01-17T19:09:27.050+0900 - PublicKeysInitialFetch:1",
+      "2026-01-17T19:09:27.051+0900 - GettingSignatureRequest:1",
+      "2026-01-17T19:09:27.057+0900 - NoAccount:3"
+    ],
+    "ops" : {
+      "publicKeyRefresh" : "<KTPublicKeyStoreRefresh: finished 2026-01-17 10:09:27 +0000 2026-01-17 10:09:27 +0000>"
+    },
+    "IDSKVSOptInHistory" : [
+
+    ],
+    "state" : "NoAccount",
+    "ids-kt" : {
+      "IDS" : {
+        "unreg" : {
+          "tbs" : "0A240A20D6A2DC1A3C36585BBCD41AF4D2E98AA5F2781AB9B4770440F4A9C53910D52D2F100D100D1805224508011241041F7A307A396ED941572B9804F595783753178F31DE07AC1A3E4318CD0A836A7F5A6B9354F32411F2AAC694BCCF36C18F37F4AE02EBC5E682B7B0DE5A728513D4",
+          "kvs" : false,
+          "optin" : 0
+        }
+      },
+      "MP" : {
+        "unreg" : {
+          "tbs" : "0A240A20D6A2DC1A3C36585BBCD41AF4D2E98AA5F2781AB9B4770440F4A9C53910D52D2F100D100D1805",
+          "kvs" : false,
+          "optin" : 0
+        }
+      },
+      "FT" : {
+        "unreg" : {
+          "tbs" : "0A240A20D6A2DC1A3C36585BBCD41AF4D2E98AA5F2781AB9B4770440F4A9C53910D52D2F100D100D1805",
+          "kvs" : false,
+          "optin" : 0
+        }
+      }
+    },
+    "cloudkitaccounttracker" : "<KTAccountStateTracker: <CKAccountInfo: 0x89893cbc0; accountStatus=No account, accountPartition=Prod, deviceToDeviceEncryptionAvailability=(none), hasValidCredentials=false, walrus=Disabled, needsToVerifyTerms=false, accountAccessAuthorization=Yes, validationCounter=1>>",
+    "cfprefs" : {
+      "CloudKitAccountInfoCache" : {
+        "5b0b79f5e7206b18ea6d6235348deb9ed53261e7be428e82b3cd9a5a12310777" : "62706C6973743030D4010203040506070A582476657273696F6E592461726368697665725424746F7058246F626A6563747312000186A05F100F4E534B657965644172636869766572D1080954726F6F748001A30B0C1F55246E756C6CDA0D0E0F1011121314151617181919171B191D1E175F101A4163636F756E74416363657373417574686F72697A6174696F6E5C57616C7275735374617475735F1013427970617373504353456E6372797074696F6E5F101348617356616C696443726564656E7469616C735F10104163636F756E74506172746974696F6E5F1024446576696365546F446576696365456E6372797074696F6E417661696C6162696C6974795F10124E65656473546F5665726966795465726D735624636C6173735D4163636F756E745374617475735F101C4163636F756E74496E666F56616C69646174696F6E436F756E74657210011002080810000880021003D2202122235A24636C6173736E616D655824636C61737365735D434B4163636F756E74496E666FA22224584E534F626A65637400080011001A00240029003200370049004C005100530057005D0072008F009C00B200C800DB01020117011E012C014B014D014F015001510153015401560158015D01680171017F0182000000000000020100000000000000250000000000000000000000000000018B"
+      },
+      "CKPerBootTasks" : [
+        "CKAccountInfoCacheReset"
+      ],
+      "CKStartupTime" : 1768644511
+    },
+    "fetcher" : "<KTNearFutureScheduler(ck-zone-fetcher): no pending attempts",
+    "reachability" : "network",
+    "networkTimeout" : "Bucket[tokens:[3600.0\/3600.0<1.0>]|quick:[3600.0\/3600.0<1.0>]]",
+    "lasts" : {
+
+    },
+    "nfs" : {
+      "ck-zone-fetcher" : {
+        "currentDelay" : 2
+      },
+      "OctagonPoller" : {
+        "currentDelay" : 1
+      },
+      "ckksCheckerNFS" : {
+        "currentDelay" : 2
+      },
+      "manateeViewChanged" : {
+        "currentDelay" : 5
+      }
+    },
+    "backgroundOp" : {
+
+    },
+    "accountKeyCache" : "<no-key>",
+    "accountKey" : "<no-key>"
+  },
+  "error" : "Error Domain=com.apple.Transparency Code=9 \"(null)\"",
+  "isFallback" : "2026-01-17T10:10:31Z",
+  "optedIn" : "false"
+}
