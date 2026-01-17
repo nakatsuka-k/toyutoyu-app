@@ -13,3 +13,6 @@ jest.mock('react-native-webview', () => {
     default: WebView,
   };
 });
+
+// Mock image assets
+jest.mock('./assets/home-bg.png', () => 'home-bg.png', { virtual: true });

@@ -11,9 +11,11 @@ import {
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { WebView } from 'react-native-webview';
 import type { WebViewNavigation } from 'react-native-webview';
+import SplashScreen from './SplashScreen';
 
 const HOME_URL = 'https://totoyu-58355.bubbleapps.io/';
 const ALLOWED_HOSTS = new Set(['totoyu-58355.bubbleapps.io']);
+const BG_COLOR = '#F9F4E9';
 
 function isAllowedUrl(urlString: string): boolean {
   if (urlString === 'about:blank') return true;
@@ -26,9 +28,29 @@ function isAllowedUrl(urlString: string): boolean {
   }
 }
 
+// JavaScriptコードでリンククリックのデフォルト動作をオーバーライド
+const INJECT_JAVASCRIPT = `
+  (function() {
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href]');
+      if (target && target.href) {
+        const url = new URL(target.href, window.location.href);
+        // totoyu-58355.bubbleapps.io ドメイン以外のリンクをクリック禁止
+        if (url.hostname !== 'totoyu-58355.bubbleapps.io') {
+          e.preventDefault();
+          return false;
+        }
+      }
+    }, true);
+  })();
+  true;
+`;
+
+
 export default function App() {
   const webViewRef = useRef<WebView>(null);
   const [canGoBack, setCanGoBack] = useState(false);
+  const [splashVisible, setSplashVisible] = useState(true);
 
   useEffect(() => {
     if (Platform.OS !== 'android') return;
@@ -56,6 +78,10 @@ export default function App() {
 
   const webViewSource = useMemo(() => ({ uri: HOME_URL }), []);
 
+  if (splashVisible) {
+    return <SplashScreen onFinish={() => setSplashVisible(false)} />;
+  }
+
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content" />
@@ -71,6 +97,9 @@ export default function App() {
           )}
           onNavigationStateChange={onNavigationStateChange}
           onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+          injectedJavaScript={INJECT_JAVASCRIPT}
+          javaScriptEnabled
+          allowsLinkPreview={false}
         />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -80,11 +109,12 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: BG_COLOR,
   },
   loading: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: BG_COLOR,
   },
 });
