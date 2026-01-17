@@ -7,9 +7,11 @@ interface SplashScreenProps {
 
 const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
   useEffect(() => {
+    // 2秒後にスプラッシュスクリーンを非表示にする
+    // ただし、App.tsxのタイマー（5秒）もあるため、どちらか先に終わった方で非表示になる
     const timer = setTimeout(() => {
       onFinish();
-    }, 2000); // Show splash screen for 2 seconds
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [onFinish]);

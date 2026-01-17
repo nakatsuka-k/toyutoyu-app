@@ -51,6 +51,20 @@ export default function App() {
   const webViewRef = useRef<WebView>(null);
   const [canGoBack, setCanGoBack] = useState(false);
   const [splashVisible, setSplashVisible] = useState(true);
+  const splashTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // スプラッシュスクリーンを確実に非表示にするタイマーをセット（最大5秒）
+    splashTimerRef.current = setTimeout(() => {
+      setSplashVisible(false);
+    }, 5000);
+
+    return () => {
+      if (splashTimerRef.current) {
+        clearTimeout(splashTimerRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (Platform.OS !== 'android') return;
@@ -66,6 +80,20 @@ export default function App() {
 
   const onNavigationStateChange = useCallback((navState: WebViewNavigation) => {
     setCanGoBack(navState.canGoBack);
+  }, []);
+
+  const onLoadEnd = useCallback(() => {
+    // WebView読み込み完了時にスプラッシュスクリーンを非表示
+    setSplashVisible(false);
+    if (splashTimerRef.current) {
+      clearTimeout(splashTimerRef.current);
+    }
+  }, []);
+
+  const onError = useCallback((syntheticEvent: any) => {
+    console.error('WebView error:', syntheticEvent.nativeEvent.description);
+    // エラーが発生してもスプラッシュスクリーンは非表示にする
+    setSplashVisible(false);
   }, []);
 
   const onShouldStartLoadWithRequest = useCallback((request: { url: string }) => {
@@ -97,9 +125,12 @@ export default function App() {
           )}
           onNavigationStateChange={onNavigationStateChange}
           onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+          onLoadEnd={onLoadEnd}
+          onError={onError}
           injectedJavaScript={INJECT_JAVASCRIPT}
           javaScriptEnabled
           allowsLinkPreview={false}
+          scalesPageToFit
         />
       </SafeAreaView>
     </SafeAreaProvider>
