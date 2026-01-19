@@ -17,7 +17,13 @@ const HOME_URL = 'https://totoyu-58355.bubbleapps.io/';
 const ALLOWED_HOSTS = new Set(['totoyu-58355.bubbleapps.io']);
 const BG_COLOR = '#F9F4E9';
 
-function isAllowedUrl(urlString: string): boolean {
+type WebViewRequest = WebViewNavigation & {
+  isTopFrame?: boolean;
+  mainDocumentURL?: string;
+};
+
+function isAllowedUrl(urlString: string, isTopFrame = true): boolean {
+  if (!isTopFrame) return true;
   if (urlString === 'about:blank') return true;
   try {
     const url = new URL(urlString);
@@ -96,8 +102,9 @@ export default function App() {
     setSplashVisible(false);
   }, []);
 
-  const onShouldStartLoadWithRequest = useCallback((request: { url: string }) => {
-    if (isAllowedUrl(request.url)) return true;
+  const onShouldStartLoadWithRequest = useCallback((request: WebViewRequest) => {
+    const isTopFrame = request.isTopFrame ?? true;
+    if (isAllowedUrl(request.url, isTopFrame)) return true;
     Linking.openURL(request.url).catch(() => {
       // ignore
     });
@@ -130,6 +137,7 @@ export default function App() {
           injectedJavaScript={INJECT_JAVASCRIPT}
           javaScriptEnabled
           allowsLinkPreview={false}
+          setSupportMultipleWindows={false}
           scalesPageToFit
         />
       </SafeAreaView>
